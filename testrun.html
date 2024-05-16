@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIRVANA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap'); /* Gothic font */
+
+        body {
+            font-family: 'UnifrakturMaguntia', cursive; /* Gothic font */
+            margin: 0;
+            padding: 20px;
+            background-image: url('I:\memes\ebe6631e86211b958755d41033b196ee.jpg'); /* Relative path to the background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white; /* Ensuring text is readable against the background */
+        }
+        #poem {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background to enhance readability */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #ff66ff; /* Adjusting the color to match the Gothic theme */
+            animation: glow 2s linear infinite alternate; /* Animation effect */
+        }
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff66ff, 0 0 30px #ff66ff, 0 0 40px #ff66ff, 0 0 50px #ff66ff, 0 0 60px #ff66ff, 0 0 70px #ff66ff;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff0099, 0 0 40px #ff0099, 0 0 50px #ff0099, 0 0 60px #ff0099, 0 0 70px #ff0099, 0 0 80px #ff0099;
+            }
+        }
+
+        #hotAirBalloon {
+            position: relative;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #hotAirBalloon img {
+            width: 100px; /* Adjust size as needed */
+            animation: drop 5s ease-in forwards;
+        }
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="poem">
+    <h1>NIRVANA</h1>
+    <p id="poemText"></p>
+    <div id="hotAirBalloon">
+        <img src="E:\gibb\hot-air-balloon.png" alt="Hot Air Balloon">
+        <p id="loveMessage"></p>
+    </div>
+</div>
+
+<script>
+    const poemLines = [
+        "In the vast expanse of the digital domain,",
+        "Strangers meet, a connection to attain.",
+        "Across the wires, in the realm unseen,",
+        "Hearts open up, like a blossoming dream.",
+        "",
+        "Words exchanged, in bits and bytes,",
+        "Emotions flowing, like shimmering lights.",
+        "Shared laughter, and moments profound,",
+        "In this virtual world, love is found.",
+        "",
+        "Distance fades, as feelings grow strong,",
+        "A bond forms, amidst the virtual throng.",
+        "From strangers to friends, and then even more,",
+        "Love transcends screens, to the very core.",
+        "",
+        "In the realm of cyberspace, where souls unite,",
+        "Two hearts entwined, in a digital flight.",
+        "From strangers to lovers, in a journey divine,",
+        "Finding Nirvana, in this virtual shrine."
+    ];
+
+    const poemElement = document.getElementById('poemText');
+    let lineIndex = 0;
+    let wordIndex = 0;
+
+    function animatePoem() {
+        if (lineIndex < poemLines.length) {
+            const currentLine = poemLines[lineIndex];
+            const currentWord = currentLine.slice(0, wordIndex + 1);
+            poemElement.textContent = currentWord;
+            wordIndex++;
+            if (wordIndex > currentLine.length) {
+                wordIndex = 0;
+                lineIndex++;
+                poemElement.innerHTML += '<br>'; // Add line break after each line
+            }
+        } else {
+            clearInterval(poemInterval);
+            animateLoveMessage();
+        }
+    }
+
+    const poemInterval = setInterval(animatePoem, 100); // Adjust the interval for the animation speed
+
+    const loveMessage = "You're the most perfect girl to paint my bleak life with colors";
+    const loveMessageElement = document.getElementById('loveMessage');
+    let loveMessageIndex = 0;
+
+    function animateLoveMessage() {
+        const loveMessageInterval = setInterval(() => {
+            if (loveMessageIndex < loveMessage.length) {
+                loveMessageElement.textContent += loveMessage.charAt(loveMessageIndex);
+                loveMessageIndex++;
+            } else {
+                clearInterval(loveMessageInterval);
+            }
+        }, 150); // Adjust the interval for the animation speed
+    }
+</script>
+
+</body>
+</html>
